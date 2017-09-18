@@ -112,6 +112,7 @@ public class AppScanTest
     		}
     	}
 
+    	//Create an HTML report of the scan result to identify the vulnerabilities and their risk levels
 		System.out.println("HTML Report");
 		PrintWriter outputFile = new PrintWriter(output);
 	    outputFile.write(new String(api.core.htmlreport(ZAP_APIKEY)));
@@ -135,6 +136,7 @@ public class AppScanTest
     		System.out.println("Spider : " + app.BASE_URL);
     		resp = api.spider.scan(ZAP_APIKEY,app.BASE_URL,null,null,null,null);
     		
+    		//The spider action returns a unique scan ID to support concurrent scanning
     		scanid = ((ApiResponseElement) resp).getValue();
     		System.out.println("this is the scanned id "+ scanid);
     		
